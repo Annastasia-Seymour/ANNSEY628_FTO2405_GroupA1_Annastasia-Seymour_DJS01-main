@@ -9,10 +9,11 @@
 const velocityKmPerHour = 10000; // velocity (km/h)
 const acceleration = 3; // acceleration (m/s^2)
 const timeInSeconds = 3600; // seconds (1 hour)
-const distanceInKm =0; // distance (km)
+const distanceInKm = 0 ; // distance (km)
 const fuelRemaining = 5000; // remaining fuel (kg)
 const fuelBurnRate = 0.5; // fuel burn rate (kg/s)
 
+const regex = /^\d+(\.\d+)$/;
 
 const newDistanceInKm = distanceInKm + velocityKmPerHour ; //calculates new distance
 const newFuelRemaining = fuelRemaining - fuelBurnRate * timeInSeconds;//calculates remaining fuel
@@ -26,13 +27,13 @@ function calcNewVel (acceleration, velocityKmPerHour, timeInSeconds){
 }
 
 function isNumber (inputSearch){
-  return /^\d+(\.\d+)$/ .test(String(inputSearch));
+  return regex.test(String(inputSearch)) && inputSearch >= 0;
 }
 
 if (isNumber(newDistanceInKm) || isNumber(newFuelRemaining) || isNumber(newVelocity)) {
-  console.log("Invalid input , cannot be string or negative");
+    console.log("Invalid input , cannot be string or negative");
 } else {
-  console.log("Correct input, All are numbers");
+  console.log("Correct input, All inputs are numbers");
 }
 
 
